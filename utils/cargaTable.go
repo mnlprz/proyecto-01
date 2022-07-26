@@ -1,9 +1,10 @@
 package utils
 
 import (
-	"database/sql"
 	"encoding/csv"
+	"github/mnlprz/go/proyecto-01/database"
 	"io"
+	"log"
 	"os"
 )
 
@@ -21,11 +22,17 @@ const createAccount = ` INSERT INTO entrada (
   $1, $2, $3
 )`
 
-func CargaTable(db *sql.DB) error {
+func CargaTable() error {
+
+	db, err := database.GetConnection()
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer db.Close()
 
 	f, err := os.Open("entrada.csv")
 	if err != nil {
-		return err
+		log.Fatal(err)
 	}
 	csvReader := csv.NewReader(f)
 	csvReader.Comma = (';')
@@ -35,8 +42,9 @@ func CargaTable(db *sql.DB) error {
 			break
 		}
 		if err != nil {
-			return err
+			log.Fatal(err)
 		}
+
 		entrada := Entrada{
 			campo1: rec[0],
 			campo2: rec[1],
@@ -44,7 +52,7 @@ func CargaTable(db *sql.DB) error {
 		}
 		_, err = db.Exec(createAccount, entrada.campo1, entrada.campo2, entrada.campo3)
 		if err != nil {
-			return err
+			log.Fatal(err)
 		}
 	}
 	return nil

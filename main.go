@@ -1,19 +1,18 @@
 package main
 
 import (
-	"github/mnlprz/go/proyecto-01/database"
-	"github/mnlprz/go/proyecto-01/utils"
+	"github/mnlprz/go/proyecto-01/handlers"
 	"log"
+	"net/http"
 )
 
 func main() {
-	db, err := database.GetConnection()
+
+	handlers.SetHandlers()
+
+	err := http.ListenAndServe(":5555", nil)
 	if err != nil {
 		log.Fatal(err)
 	}
-	defer db.Close()
-	err = utils.CargaTable(db)
-	if err != nil {
-		log.Fatal(err)
-	}
+
 }
