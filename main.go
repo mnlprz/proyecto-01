@@ -8,11 +8,11 @@ import (
 
 func main() {
 
+	const PORT = ":5555"
+
 	handlers.SetHandlers()
 
-	err := http.ListenAndServe(":5555", nil)
-	if err != nil {
+	if err := http.ListenAndServe(PORT, nil); err != nil {
 		log.Fatal(err)
 	}
-
 }

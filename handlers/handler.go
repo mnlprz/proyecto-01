@@ -1,7 +1,7 @@
 package handlers
 
 import (
-	"github/mnlprz/go/proyecto-01/utils"
+	"github/mnlprz/go/proyecto-01/services"
 	"log"
 	"net/http"
 )
@@ -9,10 +9,11 @@ import (
 func SetHandlers() {
 
 	http.HandleFunc("/cargatabla", func(w http.ResponseWriter, req *http.Request) {
-		err := utils.CargaTable()
+		err := services.CargaTabla()
 		if err != nil {
 			log.Fatal(err)
 		}
+		w.Write([]byte("Tabla cargada exitosamente."))
 	})
 
 	http.HandleFunc("/", func(w http.ResponseWriter, req *http.Request) {

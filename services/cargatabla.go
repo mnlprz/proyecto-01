@@ -1,4 +1,4 @@
-package utils
+package services
 
 import (
 	"encoding/csv"
@@ -22,7 +22,7 @@ const createAccount = ` INSERT INTO entrada (
   $1, $2, $3
 )`
 
-func CargaTable() error {
+func CargaTabla() error {
 
 	db, err := database.GetConnection()
 	if err != nil {
