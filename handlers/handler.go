@@ -1,9 +1,11 @@
 package handlers
 
 import (
+	"encoding/json"
 	"github/mnlprz/go/proyecto-01/services"
 	"log"
 	"net/http"
+	"strconv"
 )
 
 func SetHandlers() {
@@ -16,10 +18,17 @@ func SetHandlers() {
 		w.Write([]byte("Tabla cargada exitosamente."))
 	})
 
-	http.HandleFunc("/", func(w http.ResponseWriter, req *http.Request) {
-		_, err := w.Write([]byte("HOLA"))
+	http.HandleFunc("/getentrada/{id}", func(w http.ResponseWriter, req *http.Request) {
+		idParam := req.URL.Query().Get("id")
+		id, err := strconv.ParseInt(idParam, 10, 64)
 		if err != nil {
 			log.Fatal(err)
 		}
+		entrada, err := services.GetEntrada(id)
+		if err != nil {
+			log.Fatal(err)
+		}
+		entradaJson, err := json.Marshal(entrada)
+		w.Write(entradaJson)
 	})
 }

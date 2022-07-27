@@ -55,5 +55,6 @@ func CargaTabla() error {
 			log.Fatal(err)
 		}
 	}
+	log.Println("Tabla Cargada Exitosamente...")
 	return nil
 }
