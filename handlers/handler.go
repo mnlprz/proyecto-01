@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"encoding/json"
+	"github/mnlprz/go/proyecto-01/models"
 	"github/mnlprz/go/proyecto-01/services"
 	"log"
 	"net/http"
@@ -39,10 +40,32 @@ func SetHandlers() {
 			w.Write(entradaJson)
 
 		case "POST":
-			log.Println("METODO POST")
+			var entrada models.Entrada
+			dec := json.NewDecoder(req.Body)
+			err := dec.Decode(&entrada)
+			if err != nil {
+				log.Fatal(err)
+			}
+			log.Println(entrada)
+			err = services.InsertEntrada(entrada)
+			if err != nil {
+				log.Fatal(err)
+			}
+			w.Write([]byte("Insertado correctamente."))
 
 		case "PUT":
-			log.Println("METODO PUT")
+			var entrada models.Entrada
+			dec := json.NewDecoder(req.Body)
+			err := dec.Decode(&entrada)
+			if err != nil {
+				log.Fatal(err)
+			}
+			log.Println(entrada)
+			err = services.UpdateEntrada(entrada)
+			if err != nil {
+				log.Fatal(err)
+			}
+			w.Write([]byte("Actualizado correctamente."))
 
 		case "DELETE":
 			idParam := req.URL.Query().Get("id")
