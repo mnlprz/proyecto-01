@@ -31,4 +31,14 @@ func SetHandlers() {
 		entradaJson, err := json.Marshal(entrada)
 		w.Write(entradaJson)
 	})
+
+	http.HandleFunc("/getentradas/{campo1}", func(w http.ResponseWriter, req *http.Request) {
+		campo1 := req.URL.Query().Get("campo1")
+		entradas, err := services.GetEntradas(campo1)
+		if err != nil {
+			log.Fatal(err)
+		}
+		entradaJson, err := json.Marshal(entradas)
+		w.Write(entradaJson)
+	})
 }

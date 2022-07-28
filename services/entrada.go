@@ -7,11 +7,10 @@ import (
 	"log"
 )
 
-const selectEntrada = "SELECT * FROM entrada WHERE id = $1"
-
 func GetEntrada(id int64) (models.Entrada, error) {
 
 	var entrada models.Entrada
+	const selectEntrada = "SELECT * FROM entrada WHERE id = $1"
 
 	db, err := database.GetConnection()
 	if err != nil {
@@ -23,4 +22,34 @@ func GetEntrada(id int64) (models.Entrada, error) {
 		log.Fatal(r)
 	}
 	return entrada, nil
+}
+
+func GetEntradas(campo1 string) ([]models.Entrada, error) {
+
+	var entradas []models.Entrada
+	const selectEntrada = "SELECT * FROM entrada WHERE campo1 = $1"
+
+	db, err := database.GetConnection()
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer db.Close()
+	r, err := db.Query(selectEntrada, campo1)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer r.Close()
+
+	for r.Next() {
+		var entrada models.Entrada
+		err = r.Scan(&entrada.Id, &entrada.Campo1, &entrada.Campo2, &entrada.Campo3, &entrada.CreatedAt, &entrada.UpdatedAt)
+		if err != nil {
+			log.Fatal(err)
+		}
+		entradas = append(entradas, entrada)
+	}
+	if r.Err() != nil {
+		log.Fatal(err)
+	}
+	return entradas, nil
 }
