@@ -24,6 +24,22 @@ func GetEntrada(id int64) (models.Entrada, error) {
 	return entrada, nil
 }
 
+func DeleteEntrada(id int64) error {
+
+	const selectEntrada = "DELETE FROM entrada WHERE id = $1"
+
+	db, err := database.GetConnection()
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer db.Close()
+	_, err = db.Exec(selectEntrada, id)
+	if err != nil {
+		log.Fatal(err)
+	}
+	return nil
+}
+
 func GetEntradas(campo1 string) ([]models.Entrada, error) {
 
 	var entradas []models.Entrada
