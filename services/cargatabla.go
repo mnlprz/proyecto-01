@@ -3,24 +3,13 @@ package services
 import (
 	"encoding/csv"
 	"github/mnlprz/go/proyecto-01/database"
+	"github/mnlprz/go/proyecto-01/models"
 	"io"
 	"log"
 	"os"
 )
 
-type Entrada struct {
-	campo1 string
-	campo2 string
-	campo3 string
-}
-
-const createAccount = ` INSERT INTO entrada (
-  campo1,
-  campo2,
-  campo3
-) VALUES (
-  $1, $2, $3
-)`
+const query = "INSERT INTO ofertas (num_persona, oferta, nombre, apellido, sit_iva, digital, fecha, created_at, updated_at) VALUES ($1, $2, $3, $4, $5, $6, $7, NOW(), NOW())"
 
 func CargaTabla() error {
 
@@ -30,12 +19,12 @@ func CargaTabla() error {
 	}
 	defer db.Close()
 
-	f, err := os.Open("entrada.csv")
+	f, err := os.Open("ofertas.csv")
 	if err != nil {
 		log.Fatal(err)
 	}
 	csvReader := csv.NewReader(f)
-	csvReader.Comma = (';')
+	csvReader.Comma = (',')
 	for {
 		rec, err := csvReader.Read()
 		if err == io.EOF {
@@ -45,12 +34,16 @@ func CargaTabla() error {
 			log.Fatal(err)
 		}
 
-		entrada := Entrada{
-			campo1: rec[0],
-			campo2: rec[1],
-			campo3: rec[2],
+		oferta := models.Oferta{
+			NumPersona: rec[0],
+			Oferta:     rec[1],
+			Nombre:     rec[2],
+			Apellido:   rec[3],
+			SitIva:     rec[4],
+			Digital:    rec[5],
+			Fecha:      rec[6],
 		}
-		_, err = db.Exec(createAccount, entrada.campo1, entrada.campo2, entrada.campo3)
+		_, err = db.Exec(query, oferta.NumPersona, oferta.Oferta, oferta.Nombre, oferta.Apellido, oferta.SitIva, oferta.Digital, oferta.Fecha)
 		if err != nil {
 			log.Fatal(err)
 		}
