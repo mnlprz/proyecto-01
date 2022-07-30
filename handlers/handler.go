@@ -11,12 +11,20 @@ import (
 
 func SetHandlers() {
 
-	http.HandleFunc("/cargatabla", func(w http.ResponseWriter, req *http.Request) {
-		err := services.CargaTabla()
+	http.HandleFunc("/cargatablaofertas", func(w http.ResponseWriter, req *http.Request) {
+		err := services.CargaTablaOfertas()
 		if err != nil {
 			log.Fatal(err)
 		}
-		w.Write([]byte("Tabla cargada exitosamente."))
+		w.Write([]byte("Tabla OFERTAS cargada exitosamente."))
+	})
+
+	http.HandleFunc("/cargatablapersonas", func(w http.ResponseWriter, req *http.Request) {
+		err := services.CargaTablaPersonas()
+		if err != nil {
+			log.Fatal(err)
+		}
+		w.Write([]byte("Tabla PERSONAS cargada exitosamente."))
 	})
 
 	http.HandleFunc("/entrada/{id}", func(w http.ResponseWriter, req *http.Request) {

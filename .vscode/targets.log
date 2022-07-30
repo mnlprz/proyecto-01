@@ -7,8 +7,9 @@ make: *** No rule to make target 'all'.  Stop.
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
+ 
 
-# Make data base, printed on Wed Jul 27 22:10:42 2022
+# Make data base, printed on Fri Jul 29 22:02:03 2022
 
 # Variables
 
@@ -81,13 +82,13 @@ MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 2451
+VSCODE_PID = 1752
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
-SESSION_MANAGER = local/archlinux:@/tmp/.ICE-unix/973,unix/archlinux:/tmp/.ICE-unix/973
+SESSION_MANAGER = local/archlinux:@/tmp/.ICE-unix/978,unix/archlinux:/tmp/.ICE-unix/978
 # automatic
 *F = $(notdir $*)
 # environment
@@ -123,7 +124,7 @@ MOTD_SHOWN = pam
 # automatic
 ^F = $(notdir $^)
 # environment
-INVOCATION_ID = e18afa3c850145f6b86648c5f4fcea87
+INVOCATION_ID = 9602174cee37448a987db17f2db5b720
 # environment
 USERNAME = ema
 # automatic
@@ -145,7 +146,7 @@ GIO_LAUNCHED_DESKTOP_FILE = /usr/share/applications/visual-studio-code.desktop
 # makefile
 .DEFAULT_GOAL := postgres
 # environment
-SYSTEMD_EXEC_PID = 991
+SYSTEMD_EXEC_PID = 995
 # environment
 DISPLAY = :0
 # environment
@@ -155,7 +156,7 @@ MAKE_VERSION := 4.3
 # environment
 MANAGERPID = 861
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 2434
+GIO_LAUNCHED_DESKTOP_FILE_PID = 1658
 # environment
 _ = /usr/bin/make
 # environment
@@ -163,7 +164,7 @@ XDG_RUNTIME_DIR = /run/user/1000
 # environment
 GOMODCACHE = /home/ema/go/pkg/mod
 # environment
-JOURNAL_STREAM = 8:22556
+JOURNAL_STREAM = 8:19249
 # environment
 XDG_SESSION_CLASS = user
 # environment
@@ -229,6 +230,7 @@ Makefile:
 dropdb:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
+ 
 #  File does not exist.
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 10):
@@ -283,7 +285,6 @@ createdb:
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
- 
 
 # strcache buffers: 1 (0) / strings = 25 / storage = 210 B / avg = 8 B
 # current buf: size = 8162 B / used = 210 B / count = 25 / avg = 8 B
@@ -291,6 +292,6 @@ createdb:
 # strcache performance: lookups = 40 / hit rate = 37%
 # hash-table stats:
 # Load=25/8192=0%, Rehash=0, Collisions=0/40=0%
-# Finished Make data base on Wed Jul 27 22:10:42 2022
+# Finished Make data base on Fri Jul 29 22:02:03 2022
 
  
