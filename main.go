@@ -1,9 +1,10 @@
 package main
 
 import (
-	"github/mnlprz/go/proyecto-01/handlers"
 	"log"
 	"net/http"
+
+	"github.com/mnlprz/go/proyecto-01/handlers"
 )
 
 func main() {

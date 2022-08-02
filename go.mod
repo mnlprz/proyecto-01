@@ -1,4 +1,4 @@
-module github/mnlprz/go/proyecto-01
+module github.com/mnlprz/go/proyecto-01
 
 go 1.18
 

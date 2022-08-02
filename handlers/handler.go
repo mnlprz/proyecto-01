@@ -2,11 +2,12 @@ package handlers
 
 import (
 	"encoding/json"
-	"github/mnlprz/go/proyecto-01/models"
-	"github/mnlprz/go/proyecto-01/services"
 	"log"
 	"net/http"
 	"strconv"
+
+	"github.com/mnlprz/go/proyecto-01/models"
+	"github.com/mnlprz/go/proyecto-01/services"
 )
 
 func SetHandlers() {
@@ -16,15 +17,10 @@ func SetHandlers() {
 		if err != nil {
 			log.Fatal(err)
 		}
-		w.Write([]byte("Tabla OFERTAS cargada exitosamente."))
-	})
-
-	http.HandleFunc("/cargatablapersonas", func(w http.ResponseWriter, req *http.Request) {
-		err := services.CargaTablaPersonas()
+		_, err = w.Write([]byte("Tabla OFERTAS cargada exitosamente."))
 		if err != nil {
 			log.Fatal(err)
 		}
-		w.Write([]byte("Tabla PERSONAS cargada exitosamente."))
 	})
 
 	http.HandleFunc("/entrada/{id}", func(w http.ResponseWriter, req *http.Request) {
@@ -45,7 +41,10 @@ func SetHandlers() {
 			if err != nil {
 				log.Fatal(err)
 			}
-			w.Write(entradaJson)
+			_, err = w.Write(entradaJson)
+			if err != nil {
+				log.Fatal(err)
+			}
 
 		case "POST":
 			var entrada models.Entrada
@@ -59,7 +58,10 @@ func SetHandlers() {
 			if err != nil {
 				log.Fatal(err)
 			}
-			w.Write([]byte("Insertado correctamente."))
+			_, err = w.Write([]byte("Insertado correctamente."))
+			if err != nil {
+				log.Fatal(err)
+			}
 
 		case "PUT":
 			var entrada models.Entrada
@@ -73,7 +75,10 @@ func SetHandlers() {
 			if err != nil {
 				log.Fatal(err)
 			}
-			w.Write([]byte("Actualizado correctamente."))
+			_, err = w.Write([]byte("Actualizado correctamente."))
+			if err != nil {
+				log.Fatal(err)
+			}
 
 		case "DELETE":
 			idParam := req.URL.Query().Get("id")
@@ -85,7 +90,10 @@ func SetHandlers() {
 			if err != nil {
 				log.Fatal(err)
 			}
-			w.Write([]byte("Eliminado correctamente."))
+			_, err = w.Write([]byte("Eliminado correctamente."))
+			if err != nil {
+				log.Fatal(err)
+			}
 		}
 	})
 
@@ -99,6 +107,9 @@ func SetHandlers() {
 		if err != nil {
 			log.Fatal(err)
 		}
-		w.Write(entradaJson)
+		_, err = w.Write(entradaJson)
+		if err != nil {
+			log.Fatal(err)
+		}
 	})
 }

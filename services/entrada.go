@@ -2,9 +2,10 @@ package services
 
 import (
 	"database/sql"
-	"github/mnlprz/go/proyecto-01/database"
-	"github/mnlprz/go/proyecto-01/models"
 	"log"
+
+	"github.com/mnlprz/go/proyecto-01/database"
+	"github.com/mnlprz/go/proyecto-01/models"
 )
 
 func GetEntrada(id int64) (models.Entrada, error) {
