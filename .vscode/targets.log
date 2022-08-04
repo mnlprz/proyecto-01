@@ -7,9 +7,8 @@ make: *** No rule to make target 'all'.  Stop.
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
- 
 
-# Make data base, printed on Fri Jul 29 22:02:03 2022
+# Make data base, printed on Wed Aug  3 22:03:19 2022
 
 # Variables
 
@@ -38,7 +37,7 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
 .VARIABLES := 
 # environment
-PWD = /home/ema/go/src/github.com/mnlprz/proyecto-01
+PWD = /home/ema/go/src/github.com/mnlprz/go/proyecto-01
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # environment
@@ -62,7 +61,7 @@ XAUTHORITY = /run/user/1000/gdm/Xauthority
 # makefile
 MAKEFLAGS = pqrR
 # makefile
-CURDIR := /home/ema/go/src/github.com/mnlprz/proyecto-01
+CURDIR := /home/ema/go/src/github.com/mnlprz/go/proyecto-01
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # automatic
@@ -82,13 +81,13 @@ MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 1752
+VSCODE_PID = 1778
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
-SESSION_MANAGER = local/archlinux:@/tmp/.ICE-unix/978,unix/archlinux:/tmp/.ICE-unix/978
+SESSION_MANAGER = local/archlinux:@/tmp/.ICE-unix/1042,unix/archlinux:/tmp/.ICE-unix/1042
 # automatic
 *F = $(notdir $*)
 # environment
@@ -124,7 +123,7 @@ MOTD_SHOWN = pam
 # automatic
 ^F = $(notdir $^)
 # environment
-INVOCATION_ID = 9602174cee37448a987db17f2db5b720
+INVOCATION_ID = 6102e30a2b564c658d858e230117a2cb
 # environment
 USERNAME = ema
 # automatic
@@ -146,7 +145,7 @@ GIO_LAUNCHED_DESKTOP_FILE = /usr/share/applications/visual-studio-code.desktop
 # makefile
 .DEFAULT_GOAL := postgres
 # environment
-SYSTEMD_EXEC_PID = 995
+SYSTEMD_EXEC_PID = 1057
 # environment
 DISPLAY = :0
 # environment
@@ -154,9 +153,9 @@ USER = ema
 # default
 MAKE_VERSION := 4.3
 # environment
-MANAGERPID = 861
+MANAGERPID = 926
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 1658
+GIO_LAUNCHED_DESKTOP_FILE_PID = 1690
 # environment
 _ = /usr/bin/make
 # environment
@@ -164,7 +163,7 @@ XDG_RUNTIME_DIR = /run/user/1000
 # environment
 GOMODCACHE = /home/ema/go/pkg/mod
 # environment
-JOURNAL_STREAM = 8:19249
+JOURNAL_STREAM = 8:21882
 # environment
 XDG_SESSION_CLASS = user
 # environment
@@ -230,7 +229,6 @@ Makefile:
 dropdb:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
- 
 #  File does not exist.
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 10):
@@ -285,6 +283,7 @@ createdb:
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
+ 
 
 # strcache buffers: 1 (0) / strings = 25 / storage = 210 B / avg = 8 B
 # current buf: size = 8162 B / used = 210 B / count = 25 / avg = 8 B
@@ -292,6 +291,6 @@ createdb:
 # strcache performance: lookups = 40 / hit rate = 37%
 # hash-table stats:
 # Load=25/8192=0%, Rehash=0, Collisions=0/40=0%
-# Finished Make data base on Fri Jul 29 22:02:03 2022
+# Finished Make data base on Wed Aug  3 22:03:19 2022
 
  

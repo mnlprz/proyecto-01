@@ -112,4 +112,16 @@ func SetHandlers() {
 			log.Fatal(err)
 		}
 	})
+
+	http.HandleFunc("/getcontratos/{id}", func(w http.ResponseWriter, req *http.Request) {
+		id := req.URL.Query().Get("id")
+		body, err := services.GetContratos(id)
+		if err != nil {
+			log.Fatal(err)
+		}
+		_, err = w.Write(body)
+		if err != nil {
+			log.Fatal(err)
+		}
+	})
 }
