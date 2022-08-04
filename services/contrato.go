@@ -1,9 +1,11 @@
 package services
 
 import (
+	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
+	"net/url"
 )
 
 func GetContratos(nup string) ([]byte, error) {
@@ -19,4 +21,15 @@ func GetContratos(nup string) ([]byte, error) {
 		log.Fatal(err)
 	}
 	return body, nil
+}
+
+func PostContrato(data url.Values) error {
+
+	const URL = "http://localhost:5556/postcontrato/"
+	res, err := http.PostForm(URL, data)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(res)
+	return nil
 }

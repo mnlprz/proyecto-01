@@ -4,11 +4,23 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
+	"net/url"
 	"strconv"
 
 	"github.com/mnlprz/go/proyecto-01/models"
 	"github.com/mnlprz/go/proyecto-01/services"
 )
+
+type Contrato struct {
+	Nup         string
+	CodEntidad  string
+	CodCentro   string
+	NumContrato string
+	CodProd     string
+	CodSubProd  string
+	Moneda      string
+	Saldo       string
+}
 
 func SetHandlers() {
 
@@ -113,15 +125,40 @@ func SetHandlers() {
 		}
 	})
 
-	http.HandleFunc("/getcontratos/{id}", func(w http.ResponseWriter, req *http.Request) {
-		id := req.URL.Query().Get("id")
-		body, err := services.GetContratos(id)
-		if err != nil {
-			log.Fatal(err)
-		}
-		_, err = w.Write(body)
-		if err != nil {
-			log.Fatal(err)
+	http.HandleFunc("/contrato/{id}", func(w http.ResponseWriter, req *http.Request) {
+
+		switch req.Method {
+
+		case "GET":
+			id := req.URL.Query().Get("id")
+			body, err := services.GetContratos(id)
+			if err != nil {
+				log.Fatal(err)
+			}
+			_, err = w.Write(body)
+			if err != nil {
+				log.Fatal(err)
+			}
+		case "POST":
+
+			var contrato Contrato
+			err := json.NewDecoder(req.Body).Decode(&contrato)
+			if err != nil {
+				log.Fatal(err)
+			}
+			data := url.Values{}
+			data.Add("nup", contrato.Nup)
+			data.Add("codEntidad", contrato.CodEntidad)
+			data.Add("codCentro", contrato.CodCentro)
+			data.Add("numContrato", contrato.NumContrato)
+			data.Add("codProd", contrato.CodProd)
+			data.Add("codSubProd", contrato.CodSubProd)
+			data.Add("moneda", contrato.Moneda)
+			data.Add("saldo", contrato.Saldo)
+			err = services.PostContrato(data)
+			if err != nil {
+				log.Fatal(err)
+			}
 		}
 	})
 }
